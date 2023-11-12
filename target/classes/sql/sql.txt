@@ -1,0 +1,29 @@
+CREATE DATABASE posjava
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+       
+CREATE TABLE public.userposjava
+(
+  id bigint NOT NULL DEFAULT nextval('usersequence'::regclass),
+  nome character varying(255),
+  email character varying(255),
+  CONSTRAINT user_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.userposjava
+  OWNER TO postgres;
+  
+  CREATE SEQUENCE public.usersequence
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 9
+  CACHE 1;
+ALTER TABLE public.usersequence
+  OWNER TO postgres;
